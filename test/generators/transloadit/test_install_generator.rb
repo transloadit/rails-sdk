@@ -17,7 +17,10 @@ class InstallGeneratorTest < Rails::Generators::TestCase
   test 'the Transloadit config file is installed' do
     run_generator
     
-    assert_file 'config/transloadit.yml'
+    assert_file 'config/transloadit.yml' do |contents|
+      assert_match /auth/,      contents
+      assert_match /templates/, contents
+    end
   end
   
   test 'the namespace is transloadit:install' do
