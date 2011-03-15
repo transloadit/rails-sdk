@@ -7,13 +7,13 @@ class Transloadit::Rails < Rails::Engine
   
   config.to_prepare do
     ApplicationController.helper TransloaditHelper
-    ActionView::Helpers::FormBuilder include Transloadit::Rails::FormHelper
+    ActionView::Helpers::FormBuilder.include Transloadit::Rails::FormHelper
   end
   
   initializer 'transloadit.configure' do |app|
     app.root.join('config/transloadit.yml').open do |file|
       self.class.config = YAML.load(file)
-    end
+    end rescue nil
   end
   
   class << self
