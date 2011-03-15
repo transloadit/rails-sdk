@@ -7,7 +7,10 @@ class Transloadit::Rails < Rails::Engine
   
   config.to_prepare do
     ApplicationController.helper TransloaditHelper
-    ActionView::Helpers::FormBuilder.include Transloadit::Rails::FormHelper
+    
+    class ActionView::Helpers::FormBuilder
+      include Transloadit::Rails::FormHelper
+    end
   end
   
   initializer 'transloadit.configure' do |app|
