@@ -3,6 +3,8 @@ require 'transloadit/generators'
 require 'rails'
 
 class Transloadit::Rails < Rails::Engine
+  autoload :FormHelper, 'transloadit/rails/form_helper'
+  
   config.to_prepare do
     ApplicationController.helper TransloaditHelper
     ActionView::Helpers::FormBuilder include Transloadit::Rails::FormHelper
