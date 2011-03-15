@@ -19,4 +19,8 @@ class InstallGeneratorTest < Rails::Generators::TestCase
     
     assert_file 'config/transloadit.yml'
   end
+  
+  test 'the namespace is transloadit:install' do
+    assert_equal 'transloadit:install', generator_class.namespace
+  end
 end
