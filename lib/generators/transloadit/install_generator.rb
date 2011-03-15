@@ -1,8 +1,8 @@
 require 'transloadit/rails'
 require 'rails/generators'
 
-class Transloadit::Rails::Generators::InstallGenerator < Rails::Generators::Base
-  source_root File.expand_path('../../templates/transloadit', __FILE__)
+class Transloadit::Generators::InstallGenerator < Rails::Generators::Base
+  source_root File.expand_path('../../../templates/transloadit', __FILE__)
   
   desc %{Installs the Transloadit jQuery plugin and creates the config file}
   
