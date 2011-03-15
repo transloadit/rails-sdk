@@ -51,8 +51,8 @@ Refer to the templates with the `transloadify` helper. This requires jQuery,
 and loads the [Transloadit jQuery plugin](https://github.com/transloadit/jquery-sdk).
 It also uses JavaScript to ensure your form is encoded as `multipart/form-data`.
 
-  <%= form_for :thing do |form| %>
-    <%# translaodit-enables the form with the "s3_store" template %>
-    <%= transloadify :s3_store %>
-    <%= form.file_field :upload, 'File to upload' %>
-  <% end %>
+    <%= form_for :thing do |form| %>
+      <%# translaodit-enables the form with the "s3_store" template %>
+      <%= transloadify :s3_store %>
+      <%= form.file_field :upload, 'File to upload' %>
+    <% end %>
