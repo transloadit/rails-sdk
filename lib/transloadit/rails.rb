@@ -34,8 +34,8 @@ class Transloadit::Rails < Rails::Engine
     template = self.config['templates'][name.to_s]
     
     self.transloadit.assembly case template
-      when String then { :template => template }.merge(options)
-      when Hash   then template                 .merge(options)
+      when String then { :template_id => template }.merge(options)
+      when Hash   then template                    .merge(options)
     end
   end
   
