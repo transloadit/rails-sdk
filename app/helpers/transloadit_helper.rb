@@ -3,7 +3,7 @@ module TransloaditHelper
   # Enables the jQuery integration for Transloadit, and ensures the form is
   # marked with an encoding type of `multipart/form-data`.
   #
-  def transloadify(id = _guess_at_id, options = {})
+  def transloadit_jquerify(id = _guess_at_id, options = {})
     javascript_tag %{
       $(document).ready(function() {
         $.getScript('#{javascript_path('jquery.transloadit2.js')}');
