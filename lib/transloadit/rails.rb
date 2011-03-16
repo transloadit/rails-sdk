@@ -31,7 +31,7 @@ class Transloadit::Rails < Rails::Engine
   end
   
   def self.template(name, options = {})
-    template = self.config['templates'][name]
+    template = self.config['templates'][name.to_s]
     
     self.transloadit.assembly case template
       when String then { :template => template }.merge(options)
