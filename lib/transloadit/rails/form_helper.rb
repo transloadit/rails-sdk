@@ -9,7 +9,7 @@ module Transloadit::Rails::FormHelper
     params    = Transloadit::Rails.template(template, options).to_json
     signature = Transloadit::Rails.sign(params)
     
-    concat hidden_field_tag(:params,    params,    :id => nil)
-    concat hidden_field_tag(:signature, signature, :id => nil)
+    @template.hidden_field_tag(:params,    params,    :id => nil) +
+    @template.hidden_field_tag(:signature, signature, :id => nil)
   end
 end
