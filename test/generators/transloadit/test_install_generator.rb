@@ -8,12 +8,6 @@ class InstallGeneratorTest < Rails::Generators::TestCase
     prepare_destination
   end
   
-  test 'the jQuery plugin is installed' do
-    run_generator
-    
-    assert_file 'public/javascripts/jquery.transloadit2.js'
-  end
-  
   test 'the Transloadit config file is installed' do
     run_generator
     

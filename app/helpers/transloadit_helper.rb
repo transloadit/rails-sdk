@@ -6,7 +6,7 @@ module TransloaditHelper
   def transloadit_jquerify(id, options = {})
     javascript_tag %{
       $(document).ready(function() {
-        var script = '#{javascript_path('jquery.transloadit2.js')}';
+        var script = '//assets.transloadit.com/js/jquery.transloadit2.js';
         
         $.getScript(script, function() {
           $('##{id}').attr('enctype', 'multipart/form-data');
