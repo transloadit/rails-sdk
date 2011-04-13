@@ -6,6 +6,7 @@ class Transloadit::Rails < Rails::Engine
   autoload :FormHelper, 'transloadit/rails/form_helper'
   
   config.to_prepare do
+    # add the two helpers to the view stack
     ApplicationController.helper TransloaditHelper
     
     class ActionView::Helpers::FormBuilder
@@ -14,6 +15,7 @@ class Transloadit::Rails < Rails::Engine
   end
   
   initializer 'transloadit.configure' do |app|
+    # preload the contents of the configuration file.
     app.root.join('config/transloadit.yml').open do |file|
       self.class.config = YAML.load(file)
     end rescue nil
@@ -23,6 +25,9 @@ class Transloadit::Rails < Rails::Engine
     attr_accessor :config
   end
   
+  #
+  # Returns the Transloadit authentication object.
+  #
   def self.transloadit
     Transloadit.new(
       :key    => self.config['auth']['key'],
@@ -30,6 +35,9 @@ class Transloadit::Rails < Rails::Engine
     )
   end
   
+  #
+  # Creates an assembly for the named template.
+  #
   def self.template(name, options = {})
     template = self.config['templates'][name.to_s]
     
@@ -39,6 +47,9 @@ class Transloadit::Rails < Rails::Engine
     end
   end
   
+  #
+  # Signs a request to the Transloadit API.
+  #
   def self.sign(params)
     Transloadit::Request.send :_hmac, self.transloadit.secret, params
   end
