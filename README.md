@@ -53,7 +53,9 @@ It also uses JavaScript to ensure your form is encoded as `multipart/form-data`.
 
     <%= form_for :thing, :html => { :id => 'upload' } do |form| %>
       <%= form.transloadit :s3_store %>
-      <%= form.file_field :file, 'File to upload' %>
+      <%= form.label      :file, 'File to upload' %>
+      <%= form.file_field :file %>
+      <%= form.submit %>
     <% end %>
     
     <%= transloadit_jquerify :upload %>
