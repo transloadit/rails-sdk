@@ -3,6 +3,8 @@ require 'transloadit/generators'
 require 'rails'
 
 class Transloadit::Rails < Rails::Engine
+  CONFIG_PATH = 'config/transloadit.yml'
+  
   autoload :FormHelper, 'transloadit/rails/form_helper'
   
   config.to_prepare do
@@ -16,7 +18,7 @@ class Transloadit::Rails < Rails::Engine
   
   initializer 'transloadit.configure' do |app|
     # preload the contents of the configuration file.
-    app.root.join('config/transloadit.yml').open do |file|
+    app.root.join(CONFIG_PATH).open do |file|
       self.class.config = YAML.load(file)
     end rescue nil
   end
@@ -39,7 +41,7 @@ class Transloadit::Rails < Rails::Engine
   # Creates an assembly for the named template.
   #
   def self.template(name, options = {})
-    template = self.config['templates'][name.to_s]
+    template = self.config['templates'].try(:fetch, name.to_s)
     
     self.transloadit.assembly case template
       when String then { :template_id => template }.merge(options)
