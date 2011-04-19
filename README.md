@@ -9,7 +9,7 @@ you to automate uploading files through the Transloadit REST API.
 
 ## Install
 
-    gem install transloadit
+    gem install transloadit-rails
 
 ## Getting started
 
@@ -65,32 +65,30 @@ It also uses JavaScript to ensure your form is encoded as `multipart/form-data`.
 In this tutorial, you are going to learn how to use transloadit in a freshly
 setup rails project.
 
-If you haven't already done so, go ahead an install rails as well as the
-transloadit gem:
+If you haven't already done so, go ahead and install Rails.
 
     $ gem install rails
-    $ gem install transloadit
 
-With rails installed, let's create a new app called 'my_app':
+With rails installed, let's create a new app called 'my_app'.
 
     $ rails new my_app
     $ cd my_app
 
 In order to use transloadit in this app, we need to add the gem to our Gemfile
-and bundle things up:
+and bundle things up.
 
     $ echo "gem 'transloadit-rails'" >> Gemfile
     $ bundle install
 
 With that in place, it's time to generate our transloadit configuration, as
-well as a basic UploadsController:
+well as a basic UploadsController.
 
     $ rails generate transloadit:install
     $ rails generate controller uploads new create
 
 The controller generator we just executed has probably put two GET routes into
 your `config/routes.rb`. We don't want those, so lets go ahead an overwrite
-them with this:
+them with this.
 
     MyApp::Application.routes.draw do
       resources :uploads
