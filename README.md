@@ -81,10 +81,12 @@ and bundle things up.
     $ bundle install
 
 With that in place, it's time to generate our transloadit configuration, as
-well as a basic UploadsController.
+well as a basic UploadsController and a dummy Upload model.
 
-    $ rails generate transloadit:install
-    $ rails generate controller uploads new create
+    $ rails g transloadit:install
+    $ rails g controller uploads new create
+    $ rails g model upload
+    $ rails db:migrate
 
 The controller generator we just executed has probably put two GET routes into
 your `config/routes.rb`. We don't want those, so lets go ahead an overwrite
@@ -117,7 +119,7 @@ Alright, time to create our upload form. In order to do that, please open
     <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js' %>
 
     <h1>Upload an image</h1>
-    <%= form_for :upload, :html => { :id => 'upload' } do |form| %>
+    <%= form_for Upload.new, :html => { :id => 'upload' } do |form| %>
       <%= form.transloadit :image_resize %>
       <%= form.label      :file, 'File to upload' %>
       <%= form.file_field :file %>
@@ -126,18 +128,11 @@ Alright, time to create our upload form. In order to do that, please open
 
     <%= transloadit_jquerify :upload, :wait => true %>
 
-Now let's open up our `uploads_controller.rb` in order to modify our `create`
-action to parse the response JSON we get from the jQuery plugin:
-
-    def create
-      @upload = ActiveSupport::JSON.decode(params[:transloadit])
-    end
-
-With this in place, we can modify the `create.html.erb` view to render the
-uploaded and resized image:
+With this in place, we can modify the `app/views/uploads/create.html.erb` view
+to render the uploaded and resized image:
 
     <h1>Resized upload image</h1>
-    <%= image_tag @upload['results']['resize'].first['url'] %>
+    <%= image_tag params['transloadit']['results']['resize'].first['url'] %>
 
 That's it. If you've followed the steps closely, you should now be able to
 try your first upload. Don't forget do start your rails server first:
