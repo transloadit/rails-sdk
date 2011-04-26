@@ -105,13 +105,13 @@ below:
       secret: '8ad1...'
 
     templates:
-        image_resize:
-          steps:
-            resize:
-              robot : '/image/resize'
-              format: 'jpg'
-              width : 320
-              height: 200
+      image_resize:
+        steps:
+          resize:
+            robot : '/image/resize'
+            format: 'jpg'
+            width : 320
+            height: 200
 
 Alright, time to create our upload form. In order to do that, please open
 `app/views/uploads/new.html.erb`, and put the following code in:
