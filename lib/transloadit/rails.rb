@@ -5,11 +5,13 @@ require 'rails'
 class Transloadit::Rails < Rails::Engine
   CONFIG_PATH = 'config/transloadit.yml'
   
-  autoload :FormHelper, 'transloadit/rails/form_helper'
+  autoload :ControllerExtensions, 'transloadit/rails/controller_extensions'
+  autoload :FormHelper,           'transloadit/rails/form_helper'
   
   config.to_prepare do
     # add the two helpers to the view stack
     ApplicationController.helper TransloaditHelper
+    ApplicationController.extend Transloadit::Rails::ControllerExtensions
     
     class ActionView::Helpers::FormBuilder
       include Transloadit::Rails::FormHelper
