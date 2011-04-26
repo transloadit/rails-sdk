@@ -132,7 +132,7 @@ With this in place, we can modify the `app/views/uploads/create.html.erb` view
 to render the uploaded and resized image:
 
     <h1>Resized upload image</h1>
-    <%= image_tag params['transloadit']['results']['resize'].first['url'] %>
+    <%= image_tag params[:transloadit][:results][:resize].first[:url] %>
 
 That's it. If you've followed the steps closely, you should now be able to
 try your first upload. Don't forget do start your rails server first:
