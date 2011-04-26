@@ -10,8 +10,10 @@ class Transloadit::Rails < Rails::Engine
   
   config.to_prepare do
     # add the two helpers to the view stack
-    ApplicationController.helper TransloaditHelper
-    ApplicationController.extend Transloadit::Rails::ControllerExtensions
+    class ActionController::Base
+      include Transloadit::Rails::ControllerExtensions
+      helper TransloaditHelper
+    end
     
     class ActionView::Helpers::FormBuilder
       include Transloadit::Rails::FormHelper
