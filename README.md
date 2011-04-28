@@ -103,7 +103,7 @@ well as a basic UploadsController and a dummy Upload model.
 $ rails g transloadit:install
 $ rails g controller uploads new create
 $ rails g model upload
-$ rails db:migrate
+$ rake  db:migrate
 ```
 
 The controller generator we just executed has probably put two GET routes into
