@@ -9,8 +9,6 @@ class Transloadit
 
       initializer 'transloadit-rails.action_controller' do |app|
         ActiveSupport.on_load :action_controller do
-          require 'transloadit/rails/controller_extensions'
-          include Transloadit::Rails::ControllerExtensions
           helper TransloaditHelper
         end
       end

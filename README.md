@@ -70,6 +70,17 @@ It also uses JavaScript to ensure your form is encoded as `multipart/form-data`.
 <%= transloadit_jquerify :upload %>
 ```
 
+If you want to use the automatic transload parameter decoding, you have to include
+the Transloadit::Rails::ParamsDecoder module into your controller
+
+```ruby
+class YourController
+  include Transloadit::Rails::ParamsDecoder
+end
+```
+
+that way the param[:transloadit] is automatically decoded for you, if it exists
+
 ## Tutorial
 
 In this tutorial, you are going to learn how to use transloadit in a freshly
