@@ -1,1 +1,1 @@
-require 'transloadit/rails'
+require 'transloadit/rails/engine'

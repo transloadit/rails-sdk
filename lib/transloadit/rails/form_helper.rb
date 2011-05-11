@@ -1,5 +1,3 @@
-require 'transloadit/rails'
-
 module Transloadit::Rails::FormHelper
   #
   # Inserts hidden fields specifying and signing the template for Transloadit
