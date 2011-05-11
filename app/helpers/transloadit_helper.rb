@@ -5,12 +5,13 @@ module TransloaditHelper
   #
   def transloadit_jquerify(id, options = {})
     javascript_tag %{
-      $(document).ready(function() {
+      $(function() {
         var script = '//assets.transloadit.com/js/jquery.transloadit2.js';
-        
+
         $.getScript(script, function() {
-          $('##{id}').attr('enctype', 'multipart/form-data');
-          $('##{id}').transloadit(#{options.to_json});
+          $('##{id}')
+            .attr('enctype', 'multipart/form-data')
+            .transloadit(#{options.to_json});
         });
       });
     }
