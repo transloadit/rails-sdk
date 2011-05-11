@@ -61,7 +61,7 @@ It also uses JavaScript to ensure your form is encoded as `multipart/form-data`.
 
 ```erb
 <%= form_for :upload, :html => { :id => 'upload' } do |form| %>
-  <%= form.transloadit :s3_store %>
+  <%= transloadit :s3_store %>
   <%= form.label      :file, 'File to upload' %>
   <%= form.file_field :file %>
   <%= form.submit %>
@@ -139,7 +139,7 @@ auth:
 templates:
   image_resize:
     steps:
-      resize:
+      resize:
         robot : '/image/resize'
         format: 'jpg'
         width : 320
@@ -154,7 +154,7 @@ Alright, time to create our upload form. In order to do that, please open
 
 <h1>Upload an image</h1>
 <%= form_for Upload.new, :html => { :id => 'upload' } do |form| %>
-  <%= form.transloadit :image_resize %>
+  <%= transloadit :image_resize %>
   <%= form.label      :file, 'File to upload' %>
   <%= form.file_field :file %>
   <%= form.submit %>
