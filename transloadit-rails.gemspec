@@ -1,6 +1,6 @@
 $:.unshift File.expand_path('../lib', __FILE__)
 
-require 'transloadit/rails/version'
+require 'transloadit-rails'
 
 Gem::Specification.new do |gem|
   gem.name     = 'transloadit-rails'
