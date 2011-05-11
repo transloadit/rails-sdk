@@ -1,4 +1,4 @@
-require 'transloadit/rails'
+require 'transloadit-rails'
 require 'rails/generators'
 
 class Transloadit::Generators::InstallGenerator < Rails::Generators::Base

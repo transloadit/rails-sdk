@@ -1,5 +1,3 @@
-require 'transloadit/rails'
-
 module Transloadit::Rails::ControllerExtensions
   extend ActiveSupport::Concern
   
