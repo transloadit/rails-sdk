@@ -1,4 +1,4 @@
-require 'transloadit'
+require 'transloadit/rails'
 require 'transloadit/generators'
 require 'rails'
 

@@ -1,3 +1,5 @@
+require 'transloadit/rails'
+
 module Transloadit::Rails::ParamsDecoder
   extend ActiveSupport::Concern
 

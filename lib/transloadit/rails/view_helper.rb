@@ -1,3 +1,5 @@
+require 'trnasloadit/rails/engine'
+
 module Transloadit::Rails::ViewHelper
   #
   # Inserts hidden fields specifying and signing the template for Transloadit
