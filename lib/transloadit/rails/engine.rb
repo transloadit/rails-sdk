@@ -15,8 +15,8 @@ class Transloadit
 
       initializer 'transloadit-rails.action_view' do |app|
         ActiveSupport.on_load :action_view do
-          require 'transloadit/rails/form_helper'
-          include Transloadit::Rails::FormHelper
+          require 'transloadit/rails/view_helper'
+          include Transloadit::Rails::ViewHelper
         end
       end
 
