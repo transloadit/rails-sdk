@@ -1,4 +1,4 @@
-require 'trnasloadit/rails/engine'
+require 'transloadit/rails/engine'
 
 module Transloadit::Rails::ViewHelper
   #
