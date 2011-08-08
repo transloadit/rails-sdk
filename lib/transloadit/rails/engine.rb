@@ -4,11 +4,11 @@ require 'rails'
 
 class Transloadit
   module Rails
+    autoload :ParamsDecoder, 'transloadit/rails/params_decoder'
+    autoload :ViewHelper,    'transloadit/rails/view_helper'
+    
     class Engine < ::Rails::Engine
       CONFIG_PATH = 'config/transloadit.yml'
-    
-      autoload :ParamsDecoder, 'transloadit/rails/params_decoder'
-      autoload :ViewHelper,    'transloadit/rails/view_helper'
 
       initializer 'transloadit-rails.action_controller' do |app|
         ActiveSupport.on_load :action_controller do
