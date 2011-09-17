@@ -5,7 +5,7 @@ module TransloaditHelper
   #
   def transloadit_jquerify(id, options = {})
     javascript_tag %{
-      $(function() {
+      jQuery(function($) {
         var script = '//assets.transloadit.com/js/jquery.transloadit2.js';
 
         $.getScript(script, function() {
