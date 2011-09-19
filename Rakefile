@@ -1,4 +1,4 @@
-require 'rake/gempackagetask'
+require 'rubygems/package_task'
 require 'rake/testtask'
 
 RUBIES = %w{ 1.9.2 1.8.7 1.8.6 rbx-1.2.0 }
@@ -6,7 +6,7 @@ RUBIES = %w{ 1.9.2 1.8.7 1.8.6 rbx-1.2.0 }
 GEMSPEC = 'transloadit-rails.gemspec'
 
 spec = eval open(GEMSPEC).read
-Rake::GemPackageTask.new(spec) do |gem|
+Gem::PackageTask.new(spec) do |gem|
   gem.need_tar = true
 end
 
