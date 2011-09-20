@@ -1,5 +1,6 @@
 auth:
-  key   :
-  secret:
+  key     :
+  secret  :
+  duration: 30 * 60 # signed forms are valid for 30 minutes
 
 templates:

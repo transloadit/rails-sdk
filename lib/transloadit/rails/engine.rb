@@ -42,8 +42,9 @@ class Transloadit
       #
       def self.transloadit
         Transloadit.new(
-          :key    => self.configuration['auth']['key'],
-          :secret => self.configuration['auth']['secret']
+          :key      => self.configuration['auth']['key'],
+          :secret   => self.configuration['auth']['secret'],
+          :duration => self.configuration['auth']['duration']
         )
       end
 
