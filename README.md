@@ -39,7 +39,7 @@ templates.
 auth:
   key     : '4d2e...'
   secret  : '8ad1...' # optional, but highly recommended
-  duration: 30 * 60   # 30 minute validity period for signed upload forms
+  duration: 1800      # 30 minute validity period for signed upload forms
 
 templates:
   # template identified by template_id
@@ -136,7 +136,7 @@ below:
 auth:
   key     : '4d2e...'
   secret  : '8ad1...'
-  duration: 30 * 60   # 30 minute validity period for signed upload forms
+  duration: 1800      # 30 minute validity period for signed upload forms
 
 templates:
   image_resize:

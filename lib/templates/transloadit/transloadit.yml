@@ -1,6 +1,6 @@
 auth:
   key     :
   secret  :
-  duration: 30 * 60 # 30 minute validity period for signed upload forms
+  duration: 1800 # 30 minute validity period for signed upload forms
 
 templates:
