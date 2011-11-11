@@ -6,7 +6,7 @@ class Transloadit
   module Rails
     autoload :ParamsDecoder, 'transloadit/rails/params_decoder'
     autoload :ViewHelper,    'transloadit/rails/view_helper'
-    
+
     class Engine < ::Rails::Engine
       CONFIG_PATH = 'config/transloadit.yml'
 
@@ -27,7 +27,7 @@ class Transloadit
       end
 
       def self.configuration
-        YAML.load_file self.application.root.join(CONFIG_PATH)
+        YAML.load ERB.new(File.read(CONFIG_PATH)).result
       end
 
       class << self
