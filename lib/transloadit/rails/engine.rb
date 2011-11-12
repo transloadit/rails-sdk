@@ -27,9 +27,12 @@ class Transloadit
       end
 
       def self.configuration
-        config_file = self.application.root.join(CONFIG_PATH)
-        erb_result = ERB.new(File.read(config_file)).result
-        YAML.load erb_result
+        path = self.application.root.join(CONFIG_PATH)
+        erb  = ERB.new(path.read)
+
+        erb.filename = path.to_s
+
+        YAML.load erb.result
       end
 
       class << self
