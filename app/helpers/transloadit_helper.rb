@@ -11,7 +11,7 @@ module TransloaditHelper
         $.getScript(script, function() {
           $('##{id}')
             .attr('enctype', 'multipart/form-data')
-            .transloadit(#{options.to_json});
+            .transloadit($.extend(#{options.to_json}, typeof(transloadit_callbacks) !== 'undefined' ? transloadit_callbacks : {});
         });
       });
     }
