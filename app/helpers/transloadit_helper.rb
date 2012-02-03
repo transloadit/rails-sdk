@@ -11,9 +11,23 @@ module TransloaditHelper
         $.getScript(script, function() {
           $('##{id}')
             .attr('enctype', 'multipart/form-data')
-            .transloadit(#{options.to_json});
+            .transloadit(#{options_to_json(options)});
         });
       });
     }
   end
+
+  private
+
+    def options_to_json(options)
+      callbacks = [
+        :onstart, :onprogress, :onupload, :onresult, :oncancel, :onerror, :onsuccess
+      ]
+
+      js_options = options.map do |key, val|
+        "#{key.to_json}: #{callbacks.include?(key.downcase) ? val : val.to_json}"
+      end.join(",\n")
+
+      "{#{js_options}}"
+    end
 end
