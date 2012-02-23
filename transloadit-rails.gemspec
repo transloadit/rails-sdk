@@ -7,8 +7,8 @@ Gem::Specification.new do |gem|
   gem.version  = Transloadit::Rails::VERSION
   gem.platform = Gem::Platform::RUBY
   
-  gem.authors  = %w{ Stephen Touset }
-  gem.email    = %w{ stephen@touset.org }
+  gem.authors  = ['Stephen Touset', 'Robin Mehner']
+  gem.email    = ['stephen@touset.org', 'robin@coding-robin.de']
   gem.homepage = 'http://github.com/transloadit/rails-sdk/'
   
   gem.summary     = 'Official Rails gem for Transloadit'
