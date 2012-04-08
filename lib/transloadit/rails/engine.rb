@@ -26,20 +26,19 @@ class Transloadit
         self.class.application = app
       end
 
-      def self.configuration
-        path = self.application.root.join(CONFIG_PATH)
-        erb  = ERB.new(path.read)
-
-        erb.filename = path.to_s
-
-        YAML.load erb.result
-      end
-
       class << self
         attr_accessor :application
 
-        extend ActiveSupport::Memoizable
-        memoize :configuration unless ::Rails.env.development?
+        def configuration
+          if !@configuration || ::Rails.env.development?
+            path           = application.root.join(CONFIG_PATH)
+            erb            = ERB.new(path.read)
+            erb.filename   = path.to_s
+            @configuration = YAML.load(erb.result)
+          end
+
+          @configuration
+        end
       end
 
       #
