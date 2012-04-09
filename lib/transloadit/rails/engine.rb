@@ -28,17 +28,20 @@ class Transloadit
 
       class << self
         attr_accessor :application
+      end
 
-        def configuration
-          if !@configuration || ::Rails.env.development?
-            path           = application.root.join(CONFIG_PATH)
-            erb            = ERB.new(path.read)
-            erb.filename   = path.to_s
-            @configuration = YAML.load(erb.result)
-          end
-
-          @configuration
+      #
+      # Returns the configuration object (read from the YAML config file)
+      #
+      def self.configuration
+        if !@configuration || ::Rails.env.development?
+          path           = self.application.root.join(CONFIG_PATH)
+          erb            = ERB.new(path.read)
+          erb.filename   = path.to_s
+          @configuration = YAML.load(erb.result)
         end
+
+        @configuration
       end
 
       #
