@@ -173,6 +173,25 @@ to render the uploaded and resized image:
 <%= image_tag params[:transloadit][:results][:resize].first[:url] %>
 ```
 
+In order to use the transloadit params in your controller and views you
+have to include the ParamsDecoder into your controller. Let's do that for our
+UploadsController.
+
+Open up `app/controllers/uploads_controller.rb` and adapt it like that:
+
+```ruby
+class UploadsController < ApplicationController
+  include Transloadit::Rails::ParamsDecoder
+
+  def new
+  end
+
+  def create
+  end
+
+end
+```
+
 That's it. If you've followed the steps closely, you should now be able to
 try your first upload. Don't forget do start your rails server first:
 
