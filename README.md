@@ -148,6 +148,10 @@ templates:
         height: 200
 ```
 
+Note that we encourage you to enable authentication in your Transloadit Account
+and put your secret into the ```config/transloadit.yml``` to have your requests
+signed.
+
 Alright, time to create our upload form. In order to do that, please open
 `app/views/uploads/new.html.erb`, and put the following code in:
 
