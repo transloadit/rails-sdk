@@ -213,8 +213,8 @@ upload finishes.
 
 If you want to test your file uploads without relying on the network (a
 good idea to keep them fast and lean) you can include some request spec
-helpers to allow you to easily populate the `transloadit_params` data in
-your actions.
+helpers to allow you to easily populate the `transloadit_params` and
+`params[:transloadit]` in your actions.
 
 First, in your `spec/spec_helper.rb` :
 ```ruby
