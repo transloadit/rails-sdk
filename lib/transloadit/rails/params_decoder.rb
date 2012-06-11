@@ -8,10 +8,20 @@ module Transloadit::Rails::ParamsDecoder
   end
 
   def decode_transloadit_json
-    return unless params[:transloadit].present?
+    params[:transloadit] = transloadit_params
+  end
+
+  # Returns true if the current request has transloadit data.
+  def transloadit?
+    params[:transloadit].present?
+  end
+
+  # Returns the decoded transloadit parameters, or nil if the current request does not contain them.
+  def transloadit_params
+    return unless transloadit?
 
     # wrap transloadit params in a HashWithIndifferentAccess
-    params[:transloadit] = ActiveSupport::HashWithIndifferentAccess.new(
+    ActiveSupport::HashWithIndifferentAccess.new(
       ActiveSupport::JSON.decode params[:transloadit]
     )
   end
