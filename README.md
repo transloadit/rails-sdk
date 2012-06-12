@@ -206,3 +206,37 @@ $ rails server
 Then go to http://localhost:3000/uploads/new, and upload an image. If you did
 everything right, you should see the uploaded and resized file as soon as the
 upload finishes.
+
+## Testing
+
+### RSpec request specs
+
+If you want to test your file uploads without relying on the network (a
+good idea to keep them fast and lean) you can include some request spec
+helpers to allow you to easily populate the `transloadit_params` and
+`params[:transloadit]` in your actions.
+
+First, in your `spec/spec_helper.rb` :
+```ruby
+require 'transloadit/rspec/helpers'
+```
+
+Now, in your request spec :
+```ruby
+# NOTE: It's important that you don't use :js => true, otherwise your
+#       test will actually hit out using AJAX, making your test dependent on the
+#       network.
+it "can upload data files", :js => false do
+  attach_file 'upload_file', Rails.root.join('spec', 'asset', 'example.pdf')
+
+  # UploadsController should be replaced with the actual controller
+  # you're expecting to POST to when the upload is done
+  stub_transloadit!(UploadsController, example_json)
+
+  click_button 'Submit'
+end
+
+def example_json
+  "{ ... JSON content from a real POST ... }"
+end
+```
