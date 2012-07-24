@@ -56,7 +56,7 @@ templates:
 
 ## Usage
 
-Refer to the templates with the `transloadify` helper. This requires jQuery,
+Refer to the templates with the `transloadit` helper. This requires jQuery,
 and loads the [Transloadit jQuery plugin](https://github.com/transloadit/jquery-sdk).
 It also uses JavaScript to ensure your form is encoded as `multipart/form-data`.
 
