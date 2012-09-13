@@ -203,7 +203,7 @@ try your first upload. Don't forget do start your rails server first:
 $ rails server
 ```
 
-Then go to http://localhost:3000/uploads/new, and upload an image. If you did
+Then go to <http://localhost:3000/uploads/new>, and upload an image. If you did
 everything right, you should see the uploaded and resized file as soon as the
 upload finishes.
 
