@@ -41,6 +41,10 @@ class Transloadit
           @configuration = YAML.load(erb.result)
         end
 
+        if @configuration.keys.include?(::Rails.env)
+          @configuration = @configuration[::Rails.env]
+        end
+
         @configuration
       end
 
