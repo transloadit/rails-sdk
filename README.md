@@ -4,7 +4,7 @@ Fantastic file uploading for your Rails application.
 
 ## Description
 
-This is the official Rails gem for [Transloadit](transloadit.com). It allows
+This is the official Rails gem for [Transloadit](http://transloadit.com). It allows
 you to automate uploading files through the Transloadit REST API.
 
 ## Install
