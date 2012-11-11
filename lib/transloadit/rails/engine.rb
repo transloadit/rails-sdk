@@ -55,7 +55,8 @@ class Transloadit
         Transloadit.new(
           :key      => self.configuration['auth']['key'],
           :secret   => self.configuration['auth']['secret'],
-          :duration => self.configuration['auth']['duration']
+          :duration => self.configuration['auth']['duration'],
+          :max_size => self.configuration['auth']['max_size']
         )
       end
 
