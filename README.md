@@ -54,6 +54,35 @@ templates:
         height: 200
 ```
 
+### Configuration by Environment
+
+The transloadit configurations can be further broken up by environment tags to
+match the environments used by the application (i.e.  development, test,
+production).
+
+Please note, the environment tags must match the application's environments
+exactly in order to be used.
+
+```yaml
+development:
+  auth:
+    key     : '4d2e...'
+    ...
+
+  templates:
+    s3_store: '4d2e...'
+    ...
+
+production:
+  auth:
+    key     : '123a...'
+    ...
+
+  templates:
+    s3_store: '789b...'
+    ...
+```
+
 ## Usage
 
 Refer to the templates with the `transloadit` helper. This requires jQuery,
