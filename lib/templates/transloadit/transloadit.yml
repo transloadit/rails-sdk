@@ -1,6 +1,35 @@
-auth:
-  key     :
-  secret  :
-  duration: 1800 # 30 minute validity period for signed upload forms
+development:
+  auth:
+    key     : 'YOUR_KEY'
+    secret  : 'YOUR_SECRET' # this is optional, but highly recommended, https://transloadit.com/docs/authentication
+    duration: 1800 # 30 minute validity period for signed upload forms
 
-templates:
+  templates:
+    # template identified by template_id
+    s3_store: 'S3_STORE_TEMPLATE_ID'
+
+    # template defined inline
+    image_resize:
+      steps:
+        resize:
+          robot : '/image/resize'
+          width : 320
+          height: 200
+
+production:
+  auth:
+    key     : 'YOUR_KEY'
+    secret  : 'YOUR_SECRET' # this is optional, but highly recommended, https://transloadit.com/docs/authentication
+    duration: 1800 # 30 minute validity period for signed upload forms
+
+  templates:
+    # template identified by template_id
+    s3_store: 'S3_STORE_TEMPLATE_ID'
+
+    # template defined inline
+    image_resize:
+      steps:
+        resize:
+          robot : '/image/resize'
+          width : 320
+          height: 200
