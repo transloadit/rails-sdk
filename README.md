@@ -33,7 +33,8 @@ $ rails g transloadit:install
 
 Edit `config/transloadit.yml`. It has an `auth` section for your transloadit
 credentials and a `templates` section to define or refer to existing
-templates.
+templates. It is highly recommended to [enable authentication](https://transloadit.com/docs/authentication) and signing for
+the upload forms.
 
 ```yaml
 auth:
