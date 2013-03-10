@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/transloadit/rails-sdk.png?branch=master)](https://travis-ci.org/transloadit/rails-sdk)
+
 # transloadit-rails
 
 Fantastic file uploading for your Rails application.
