@@ -29,5 +29,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'simplecov'
 
   gem.add_development_dependency 'yard'
-  gem.add_development_dependency 'rdiscount' # for YARD rdoc formatting
+  gem.add_development_dependency 'kramdown' # for YARD rdoc formatting
 end
