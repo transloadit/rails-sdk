@@ -1,6 +1,7 @@
 .bundle
 .rvmrc
 .yardoc
+.ruby-version
 
 Gemfile.lock
 
