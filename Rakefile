@@ -15,36 +15,6 @@ Rake::TestTask.new do |test|
   test.pattern = 'test/**/test_*.rb'
 end
 
-namespace :test do
-  begin
-    `rvm -v` # raise an exception if RVM isn't installed
-    
-    desc 'Run tests against all supported Rubies'
-    task :multiruby do
-      system "rvm #{RUBIES.join(',')} ruby bundle exec rake -s test"
-      
-      # clean up after Rubinius
-      require 'pathname'
-      Pathname.glob('**/*.rbc').each {|path| path.unlink }
-    end
-    
-    namespace :multiruby do
-      desc 'Prepare supported rubiesfor testing'
-      task :setup do
-        warn 'Preparing multiruby. This may take awhile...'
-        
-        # create gemsets, install bundler, bundle
-        RUBIES.each {|ruby| system "rvm #{ruby} gemset create transloadit" }
-        system "rvm #{RUBIES.join(',')} gem install bundler --no-ri --no-rdoc"
-        system "rvm #{RUBIES.join(',')} ruby bundle install"
-      end
-    end
-  rescue Errno::ENOENT
-    desc 'You need `rvm` installed to test against multiple Rubies'
-    task :multiruby
-  end
-end
-
 begin
   require 'yard'
   require 'yard/rake/yardoc_task'
