@@ -1,8 +1,6 @@
 require 'rubygems/package_task'
 require 'rake/testtask'
 
-RUBIES = %w{ 1.9.2 1.8.7 1.8.6 rbx-1.2.0 }
-
 GEMSPEC = 'transloadit-rails.gemspec'
 
 spec = eval open(GEMSPEC).read
@@ -18,7 +16,7 @@ end
 begin
   require 'yard'
   require 'yard/rake/yardoc_task'
-  
+
   YARD::Rake::YardocTask.new :doc do |yard|
     yard.options = %w{
       --title  Transloadit Rails
