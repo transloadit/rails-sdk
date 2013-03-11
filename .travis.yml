@@ -11,6 +11,11 @@ rvm:
   - jruby-19mode
 script: "bundle exec rake test"
 
+gemfile:
+  - gemfile/3.0.gemfile
+  - gemfile/3.1.gemfile
+  - gemfile/3.2.gemfile
+
 matrix:
   # https://github.com/jruby/jruby/issues/573
   allow_failures:
