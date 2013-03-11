@@ -22,3 +22,14 @@ matrix:
   allow_failures:
     - rvm: jruby-18mode
     - rvm: jruby-19mode
+  exclude:
+    - rvm: jruby-18mode
+      gemfile: gemfiles/4.0.gemfile
+    - rvm: rbx-18mode
+      gemfile: gemfiles/4.0.gemfile
+    - rvm: 1.8.7
+      gemfile: gemfiles/4.0.gemfile
+    - rvm: ree
+      gemfile: gemfiles/4.0.gemfile
+    - rvm: 1.9.2
+      gemfile: gemfiles/4.0.gemfile
