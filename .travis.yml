@@ -18,10 +18,6 @@ gemfile:
   - gemfiles/4.0.gemfile
 
 matrix:
-  # https://github.com/jruby/jruby/issues/573
-  allow_failures:
-    - rvm: jruby-18mode
-    - rvm: jruby-19mode
   exclude:
     - rvm: jruby-18mode
       gemfile: gemfiles/4.0.gemfile
