@@ -10,12 +10,6 @@ class Transloadit
     class Engine < ::Rails::Engine
       CONFIG_PATH = 'config/transloadit.yml'
 
-      initializer 'transloadit-rails.action_controller' do |app|
-        ActiveSupport.on_load :action_controller do
-          helper TransloaditHelper
-        end
-      end
-
       initializer 'transloadit-rails.action_view' do |app|
         ActiveSupport.on_load :action_view do
           include Transloadit::Rails::ViewHelper
