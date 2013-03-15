@@ -86,6 +86,18 @@ production:
     ...
 ```
 
+## Support IE6 or jQuery < 1.9
+
+If you have to support IE6 and use a jQuery version below 1.9, you have to change
+the jquery_sdk_version in the config to 'v1.0.0':
+
+```yaml
+production:
+  jquery_sdk_version: 'v1.0.0'
+  auth:
+    ...
+```
+
 ## Usage
 
 Refer to the templates with the `transloadit` helper. This requires jQuery,

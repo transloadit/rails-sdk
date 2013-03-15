@@ -22,9 +22,11 @@ module Transloadit::Rails::ViewHelper
   # marked with an encoding type of `multipart/form-data`.
   #
   def transloadit_jquerify(id, options = {})
+    version = Transloadit::Rails::Engine.configuration['jquery_sdk_version'] || 'latest'
+
     javascript_tag %{
       jQuery(function($) {
-        var script = '//assets.transloadit.com/js/jquery.transloadit2.js';
+        var script = '//assets.transloadit.com/js/jquery.transloadit2-#{version}.js';
 
         $.getScript(script, function() {
           $('##{id}')
