@@ -284,3 +284,7 @@ def example_json
   "{ ... JSON content from a real POST ... }"
 end
 ```
+
+## License
+
+MIT, see [LICENSE](LICENSE)
