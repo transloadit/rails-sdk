@@ -27,7 +27,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'railties',    '>= 3'
 
   gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'minitest' # needed for < 1.9.2
   gem.add_development_dependency 'simplecov'
 
   gem.add_development_dependency 'yard'

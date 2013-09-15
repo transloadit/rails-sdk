@@ -5,7 +5,6 @@ $:.unshift File.expand_path('../../lib', __FILE__)
 # 
 # SimpleCov.start { add_filter '/test/' }
 
-require 'minitest/autorun'
 require 'transloadit/rails'
 
 require 'rails/test_help'
