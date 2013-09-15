@@ -1,3 +1,8 @@
+### 1.x.x / Not yet released ###
+
+* MIT license
+* Bumped transloadit dependency to >= 1.1.1
+
 ### 1.1.0 / 2013-03-16 ###
 
 * Switch to Kramdown for RDoc formatting
