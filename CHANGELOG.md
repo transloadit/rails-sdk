@@ -1,4 +1,4 @@
-### 1.x.x / Not yet released ###
+### 1.1.1 / 2013-09-15 ###
 
 * MIT license
 * Bumped transloadit dependency to >= 1.1.1
