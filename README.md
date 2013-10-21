@@ -204,7 +204,7 @@ Alright, time to create our upload form. In order to do that, please open
 `app/views/uploads/new.html.erb`, and put the following code in:
 
 ```erb
-<%= javascript_include_tag //ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' %>
+<%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' %>
 
 <h1>Upload an image</h1>
 <%= form_for Upload.new, :html => { :id => 'upload' } do |form| %>
