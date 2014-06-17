@@ -1,4 +1,4 @@
 source "http://rubygems.org"
 
-gem 'railties', '>= 4.0.0.beta'
+gem 'railties', '~> 4.0.0'
 gemspec :path => '../'
