@@ -26,7 +26,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'transloadit', '>= 1.1.1'
   gem.add_dependency 'railties',    '>= 3'
-  gem.add_dependency 'mime-types', '< 2.0.0' if RUBY_VERSION < '1.9'
+  gem.add_dependency 'mime-types', '~> 2.99'
 
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'minitest'

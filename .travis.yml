@@ -1,8 +1,6 @@
 sudo: false
 language: ruby
 rvm:
-  - ree
-  - 1.8.7
   - 1.9.2
   - 1.9.3
   - 2.0.0
@@ -10,7 +8,6 @@ rvm:
   - 2.2.0
   - 2.3.0-preview1
   - rbx-2
-  - jruby-18mode
   - jruby-19mode
 script: "bundle exec rake test"
 
@@ -24,12 +21,6 @@ gemfile:
 
 matrix:
   exclude:
-    - rvm: jruby-18mode
-      gemfile: gemfiles/4.0.gemfile
-    - rvm: 1.8.7
-      gemfile: gemfiles/4.0.gemfile
-    - rvm: ree
-      gemfile: gemfiles/4.0.gemfile
     - rvm: 1.9.2
       gemfile: gemfiles/4.0.gemfile
     - rvm: jruby-18mode
@@ -40,11 +31,5 @@ matrix:
       gemfile: gemfiles/4.1.gemfile
     - rvm: 1.9.2
       gemfile: gemfiles/4.1.gemfile
-    - rvm: jruby-18mode
-      gemfile: gemfiles/4.2.gemfile
-    - rvm: 1.8.7
-      gemfile: gemfiles/4.2.gemfile
-    - rvm: ree
-      gemfile: gemfiles/4.2.gemfile
     - rvm: 1.9.2
       gemfile: gemfiles/4.2.gemfile
