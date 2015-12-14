@@ -29,7 +29,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'mime-types', '~> 2.99'
 
   gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'minitest'
+  gem.add_development_dependency 'test-unit'
 
   gem.add_development_dependency 'yard'
   gem.add_development_dependency 'kramdown' # for YARD rdoc formatting
