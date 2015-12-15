@@ -1,3 +1,7 @@
+### 1.1.2 / 2015-12-15 ###
+
+* Allow `onFileSelect` callback (thanks @netonion)
+
 ### 1.1.1 / 2013-09-15 ###
 
 * MIT license
