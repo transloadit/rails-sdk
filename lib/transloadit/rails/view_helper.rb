@@ -41,7 +41,7 @@ module Transloadit::Rails::ViewHelper
 
     def options_to_json(options)
       callbacks = [
-        :onstart, :onprogress, :onupload, :onresult, :oncancel, :onerror, :onsuccess
+        :onstart, :onfileselect, :onprogress, :onupload, :onresult, :oncancel, :onerror, :onsuccess
       ]
 
       js_options = options.map do |key, val|
