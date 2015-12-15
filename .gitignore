@@ -8,5 +8,6 @@ Gemfile.lock
 coverage
 doc
 pkg
+transloadit-rails-*.gem
 
 test/tmp
