@@ -45,25 +45,38 @@ class Transloadit
       #
       # Returns the Transloadit authentication object.
       #
-      def self.transloadit
+      # options  - The Hash options used to refine the auth params (default: {}):
+      #            :max_size - The Integer maximum size an upload can have in bytes (optional).
+      def self.transloadit(options = {})
         Transloadit.new(
           :key      => self.configuration['auth']['key'],
           :secret   => self.configuration['auth']['secret'],
           :duration => self.configuration['auth']['duration'],
-          :max_size => self.configuration['auth']['max_size']
+          :max_size => options[:max_size] || self.configuration['auth']['max_size']
         )
       end
 
       #
       # Creates an assembly for the named template.
       #
+      # name    - The String or Symbol template name.
+      # options - The Hash options used to refine the Assembly (default: {}):
+      #           :steps    - The Hash with Assembly Steps (optional).
+      #           :max_size - The Integer maximum size an upload can have in bytes (optional).
       def self.template(name, options = {})
-        template = self.configuration['templates'].try(:fetch, name.to_s)
+        transloadit = self.transloadit(
+          :max_size => options.delete(:max_size)
+        )
 
-        self.transloadit.assembly case template
-          when String then { :template_id => template }.merge(options)
-          when Hash   then template                    .merge(options)
-        end
+        template = self.configuration['templates'].try(:fetch, name.to_s)
+        assembly_options  = case template
+                            when String
+                              { :template_id => template }.merge(options)
+                            when Hash
+                              template.merge(options)
+                            end
+
+        transloadit.assembly(assembly_options)
       end
 
       #

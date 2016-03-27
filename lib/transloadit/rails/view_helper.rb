@@ -5,6 +5,10 @@ module Transloadit::Rails::ViewHelper
   # Inserts hidden fields specifying and signing the template for Transloadit
   # to process.
   #
+  # template - The String or Symbol template name.
+  # options  - The Hash options used to refine the Assembly (default: {}):
+  #            :steps    - The Hash with Assembly Steps (optional).
+  #            :max_size - The Integer maximum size an upload can have in bytes (optional).
   def transloadit(template, options = {})
     params = Transloadit::Rails::Engine.template(template, options).to_json
     fields = hidden_field_tag(:params, params, :id => nil)
