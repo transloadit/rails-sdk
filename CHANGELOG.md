@@ -1,3 +1,7 @@
+### 1.2.0 / 2016-03-27 ###
+
+* Allow to pass `max_size` to the helper (thanks @avokhmin)
+
 ### 1.1.2 / 2015-12-15 ###
 
 * Allow `onFileSelect` callback (thanks @netonion)
