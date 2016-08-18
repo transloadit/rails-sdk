@@ -4,7 +4,11 @@ module Transloadit::Rails::ParamsDecoder
   extend ActiveSupport::Concern
 
   included do
-    before_filter :decode_transloadit_json
+    if Rails.version.to_i >= 5
+      before_action :decode_transloadit_json
+    else
+      before_filter :decode_transloadit_json
+    end
   end
 
   def decode_transloadit_json
