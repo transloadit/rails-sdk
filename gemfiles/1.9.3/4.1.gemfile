@@ -1,0 +1,5 @@
+source "http://rubygems.org"
+
+gem 'rest-client', '~> 1.8.0'
+gem 'railties', '~> 4.1.0'
+gemspec :path => '../..'

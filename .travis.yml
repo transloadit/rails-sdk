@@ -1,13 +1,11 @@
 sudo: false
 language: ruby
 rvm:
-  - 1.9.3
   - 2.0.0
   - 2.1.0
   - 2.2.0
   - 2.3.0
   - rbx-2
-  - jruby-19mode
   - jruby-9.0.0.0
 script: "bundle exec rake test"
 
@@ -21,6 +19,30 @@ gemfile:
 
 matrix:
   include:
+    - rvm: 1.9.3
+      gemfile: gemfiles/1.9.3/3.0.gemfile
+    - rvm: 1.9.3
+      gemfile: gemfiles/1.9.3/3.1.gemfile
+    - rvm: 1.9.3
+      gemfile: gemfiles/1.9.3/3.2.gemfile
+    - rvm: 1.9.3
+      gemfile: gemfiles/1.9.3/4.0.gemfile
+    - rvm: 1.9.3
+      gemfile: gemfiles/1.9.3/4.1.gemfile
+    - rvm: 1.9.3
+      gemfile: gemfiles/1.9.3/4.2.gemfile
+    - rvm: jruby-19mode
+      gemfile: gemfiles/1.9.3/3.0.gemfile
+    - rvm: jruby-19mode
+      gemfile: gemfiles/1.9.3/3.1.gemfile
+    - rvm: jruby-19mode
+      gemfile: gemfiles/1.9.3/3.2.gemfile
+    - rvm: jruby-19mode
+      gemfile: gemfiles/1.9.3/4.0.gemfile
+    - rvm: jruby-19mode
+      gemfile: gemfiles/1.9.3/4.1.gemfile
+    - rvm: jruby-19mode
+      gemfile: gemfiles/1.9.3/4.2.gemfile
     - rvm: 2.2.2
       gemfile: gemfiles/5.0.gemfile
     - rvm: 2.3.0
