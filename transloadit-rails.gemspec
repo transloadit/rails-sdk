@@ -15,7 +15,8 @@ Gem::Specification.new do |gem|
   gem.summary     = 'Official Rails gem for Transloadit'
   gem.description = 'The transloadit-rails gem allows you to automate uploading files through the Transloadit REST API'
 
-  gem.required_rubygems_version = '>= 1.3.6'
+  gem.required_rubygems_version = '>= 2.1.0'
+  gem.required_ruby_version     = '>= 2.1.0'
   gem.rubyforge_project         = 'transloadit-rails'
 
   gem.files         = `git ls-files`.split("\n")
@@ -26,7 +27,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'transloadit', '>= 1.1.1'
   gem.add_dependency 'railties',    '>= 3'
-  gem.add_dependency 'mime-types', '~> 2.99'
+  gem.add_dependency 'mime-types'
 
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'test-unit'

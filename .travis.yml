@@ -1,7 +1,6 @@
 sudo: false
 language: ruby
 rvm:
-  - 2.0.0
   - 2.1.0
   - 2.2.0
   - 2.3.0
@@ -18,31 +17,9 @@ gemfile:
   - gemfiles/4.2.gemfile
 
 matrix:
+  allow_failures:
+    - rvm: rbx-2
   include:
-    - rvm: 1.9.3
-      gemfile: gemfiles/1.9.3/3.0.gemfile
-    - rvm: 1.9.3
-      gemfile: gemfiles/1.9.3/3.1.gemfile
-    - rvm: 1.9.3
-      gemfile: gemfiles/1.9.3/3.2.gemfile
-    - rvm: 1.9.3
-      gemfile: gemfiles/1.9.3/4.0.gemfile
-    - rvm: 1.9.3
-      gemfile: gemfiles/1.9.3/4.1.gemfile
-    - rvm: 1.9.3
-      gemfile: gemfiles/1.9.3/4.2.gemfile
-    - rvm: jruby-19mode
-      gemfile: gemfiles/1.9.3/3.0.gemfile
-    - rvm: jruby-19mode
-      gemfile: gemfiles/1.9.3/3.1.gemfile
-    - rvm: jruby-19mode
-      gemfile: gemfiles/1.9.3/3.2.gemfile
-    - rvm: jruby-19mode
-      gemfile: gemfiles/1.9.3/4.0.gemfile
-    - rvm: jruby-19mode
-      gemfile: gemfiles/1.9.3/4.1.gemfile
-    - rvm: jruby-19mode
-      gemfile: gemfiles/1.9.3/4.2.gemfile
     - rvm: 2.2.2
       gemfile: gemfiles/5.0.gemfile
     - rvm: 2.3.0

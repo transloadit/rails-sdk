@@ -10,7 +10,7 @@ This is the official Rails gem for [Transloadit](http://transloadit.com). It all
 you to automate uploading files through the Transloadit REST API.
 
 This gem provides browser integration. If you're looking to do video transcoding / image resizing
-initiated from your own serverside Ruby code, please use the [ruby-sdk](https://github.com/transloadit/ruby-sdk) 
+initiated from your own serverside Ruby code, please use the [ruby-sdk](https://github.com/transloadit/ruby-sdk)
 instead.
 
 ## Install
@@ -51,7 +51,7 @@ auth:
 templates:
   # template identified by template_id
   s3_store: '4d2e...'
-  
+
   # template defined inline
   image_resize:
     steps:
@@ -288,6 +288,15 @@ def example_json
   "{ ... JSON content from a real POST ... }"
 end
 ```
+
+## Compatibility
+
+At a minimum, this gem should work on MRI 2.3.0, 2.2.0, 2.1.0, Rubinius, and JRuby.
+It may also work on older ruby versions, but support for those Rubies is not guaranteed.
+If it doesn't work on one of the officially supported Rubies, please file a bug report.
+Compatibility patches for other Rubies are welcome.
+
+Testing against these versions is performed automatically by [Travis CI](https://travis-ci.org/transloadit/rails-sdk).
 
 ## License
 
