@@ -1,13 +1,10 @@
 sudo: false
 language: ruby
 rvm:
-  - 1.9.3
-  - 2.0.0
   - 2.1.0
   - 2.2.0
   - 2.3.0
   - rbx-2
-  - jruby-19mode
   - jruby-9.0.0.0
 script: "bundle exec rake test"
 
@@ -18,3 +15,12 @@ gemfile:
   - gemfiles/4.0.gemfile
   - gemfiles/4.1.gemfile
   - gemfiles/4.2.gemfile
+
+matrix:
+  allow_failures:
+    - rvm: rbx-2
+  include:
+    - rvm: 2.2.2
+      gemfile: gemfiles/5.0.gemfile
+    - rvm: 2.3.0
+      gemfile: gemfiles/5.0.gemfile
