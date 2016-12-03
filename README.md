@@ -296,6 +296,9 @@ It may also work on older ruby versions, but support for those Rubies is not gua
 If it doesn't work on one of the officially supported Rubies, please file a bug report.
 Compatibility patches for other Rubies are welcome.
 
+Support for EOL'd Ruby 1.9.x and Ruby 2.0 has been dropped, please use version 1.2.0
+if you need support for older Ruby versions.
+
 Testing against these versions is performed automatically by [Travis CI](https://travis-ci.org/transloadit/rails-sdk).
 
 ## License
