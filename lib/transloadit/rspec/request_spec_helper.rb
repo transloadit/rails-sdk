@@ -16,8 +16,8 @@ class Transloadit
           ActiveSupport::JSON.decode params_json
         )
 
-        controller.any_instance.stub(:transloadit?).and_return(true)
-        controller.any_instance.stub(:transloadit_params).and_return(hash)
+        allow_any_instance_of(controller).to receive(:transloadit?).and_return(true)
+        allow_any_instance_of(controller).to receive(:transloadit_params).and_return(hash)
       end
     end
   end
