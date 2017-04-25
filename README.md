@@ -1,17 +1,16 @@
 [![Build Status](https://travis-ci.org/transloadit/rails-sdk.png?branch=master)](https://travis-ci.org/transloadit/rails-sdk)
 
-# transloadit-rails
+## rails-sdk
 
-Fantastic file uploading for your Rails application.
+A **Rails** Integration for [Transloadit](https://transloadit.com)'s file uploading and encoding service
 
-## Description
+## Intro
 
-This is the official Rails gem for [Transloadit](http://transloadit.com). It allows
-you to automate uploading files through the Transloadit REST API.
+[Transloadit](https://transloadit.com) is a service that helps you handle file uploads, resize, crop and watermark your images, make GIFs, transcode your videos, extract thumbnails, generate audio waveforms, and so much more. In short, [Transloadit](https://transloadit.com) is the Swiss Army Knife for your files.
 
-This gem provides browser integration. If you're looking to do video transcoding / image resizing
-initiated from your own serverside Ruby code, please use the [ruby-sdk](https://github.com/transloadit/ruby-sdk)
-instead.
+This is a **Rails** SDK to make it easy to talk to the [Transloadit](https://transloadit.com) REST API.
+
+*This gem provides browser integration. If you're looking to integrate Transloadit from your own serverside Ruby code checkout the [ruby-sdk](https://github.com/transloadit/ruby-sdk).*
 
 ## Install
 
@@ -19,19 +18,16 @@ instead.
 $ gem install transloadit-rails
 ```
 
-## Getting started
-
-To get started, you need to add the 'transloadit-rails' gem to your Rails
-project's Gemfile.
+or add the 'transloadit-rails' gem to your Rails project's Gemfile and update your bundle.
 
 ```bash
 $ echo "gem 'transloadit-rails'" >> Gemfile
+$ bundle install
 ```
 
-Now update your bundle and run the generator.
+After installation you need to run the transloadit `install` generator to complete the setup.
 
 ```bash
-$ bundle install
 $ rails g transloadit:install
 ```
 
@@ -44,13 +40,13 @@ the upload forms.
 
 ```yaml
 auth:
-  key     : '4d2e...'
-  secret  : '8ad1...' # optional, but highly recommended
+  key     : 'TRANSLOADIT_KEY'
+  secret  : 'TRANSLOADIT_SECRET' # optional, but highly recommended
   duration: 1800      # 30 minute validity period for signed upload forms
 
 templates:
   # template identified by template_id
-  s3_store: '4d2e...'
+  s3_store: 'YOUR_TEMPLATE_ID'
 
   # template defined inline
   image_resize:
@@ -73,40 +69,26 @@ exactly in order to be used.
 ```yaml
 development:
   auth:
-    key     : '4d2e...'
+    key     : 'TRANSLOADIT_KEY'
     ...
 
   templates:
-    s3_store: '4d2e...'
+    s3_store: 'YOUR_TEMPLATE_ID'
     ...
 
 production:
   auth:
-    key     : '123a...'
+    key     : 'TRANSLOADIT_KEY'
     ...
 
   templates:
-    s3_store: '789b...'
-    ...
-```
-
-## Support IE6 or jQuery < 1.9
-
-If you have to support IE6 and use a jQuery version below 1.9, you have to change
-the jquery_sdk_version in the config to 'v1.0.0':
-
-```yaml
-production:
-  jquery_sdk_version: 'v1.0.0'
-  auth:
+    s3_store: 'YOUR_TEMPLATE_ID'
     ...
 ```
 
 ## Usage
 
-Refer to the templates with the `transloadit` helper. This requires jQuery,
-and loads the [Transloadit jQuery plugin](https://github.com/transloadit/jquery-sdk).
-It also uses JavaScript to ensure your form is encoded as `multipart/form-data`.
+Refer to the templates (which you have set in the [config](https://github.com/transloadit/rails-sdk#configuration)) with the `transloadit` helper.
 
 ```erb
 <%= form_for :upload, :html => { :id => 'upload' } do |form| %>
@@ -116,10 +98,16 @@ It also uses JavaScript to ensure your form is encoded as `multipart/form-data`.
   <%= form.submit %>
 <% end %>
 
+<%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' %>
 <%= transloadit_jquerify :upload %>
 ```
 
-If you want to use the automatic transload parameter decoding, you have to include
+This requires jQuery, and loads the [Transloadit jQuery plugin](https://github.com/transloadit/jquery-sdk).
+*(Be sure to exclude the `<%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' %>` tag if you already have jQuery loaded.)*
+
+It also uses JavaScript to ensure your form is encoded as `multipart/form-data`.
+
+If you want to use the automatic transloadit parameter decoding, you have to include
 the Transloadit::Rails::ParamsDecoder module into your controller
 
 ```ruby
@@ -255,6 +243,10 @@ Then go to http://localhost:3000/uploads/new, and upload an image. If you did
 everything right, you should see the uploaded and resized file as soon as the
 upload finishes.
 
+## Example
+
+An example rails application following the [tutorial above](https://github.com/transloadit/rails-sdk#tutorial) can be found in the [examples](https://github.com/transloadit/rails-sdk/tree/master/examples) directory.
+
 ## Testing
 
 ### RSpec request specs
@@ -300,6 +292,19 @@ Support for EOL'd Ruby 1.9.x and Ruby 2.0 has been dropped, please use version 1
 if you need support for older Ruby versions.
 
 Testing against these versions is performed automatically by [Travis CI](https://travis-ci.org/transloadit/rails-sdk).
+
+### Support IE6 or jQuery < 1.9
+
+If you have to support IE6 and use a jQuery version below 1.9, you have to change
+the jquery_sdk_version in the config to 'v1.0.0':
+
+```yaml
+production:
+  jquery_sdk_version: 'v1.0.0'
+  auth:
+    ...
+```
+
 
 ## License
 

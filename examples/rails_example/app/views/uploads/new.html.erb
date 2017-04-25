@@ -1,0 +1,14 @@
+<h1>Uploads#new</h1>
+<p>Find me in app/views/uploads/new.html.erb</p>
+
+<%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' %>
+
+<h1>Upload an image</h1>
+<%= form_for Upload.new, :html => { :id => 'upload' } do |form| %>
+  <%= transloadit :image_resize %>
+  <%= form.label      :file, 'File to upload' %>
+  <%= form.file_field :file %>
+  <%= form.submit %>
+<% end %>
+
+<%= transloadit_jquerify :upload, :wait => true %>
