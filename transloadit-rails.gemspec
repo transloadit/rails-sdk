@@ -19,7 +19,8 @@ Gem::Specification.new do |gem|
   gem.required_ruby_version     = '>= 2.1.0'
   gem.rubyforge_project         = 'transloadit-rails'
 
-  gem.files         = `git ls-files`.split("\n")
+  gem_ignored_files = `git ls-files examples`.split("\n")
+  gem.files         = `git ls-files`.split("\n") - gem_ignored_files
   gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   gem.require_paths = %w{ lib }
 
