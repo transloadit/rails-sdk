@@ -11,7 +11,7 @@ module Transloadit::Rails::ViewHelper
   #            :max_size - The Integer maximum size an upload can have in bytes (optional).
   def transloadit(template, options = {})
     params = Transloadit::Rails::Engine.template(template, options).to_json
-    fields = hidden_field_tag(:params, params, :id => nil)
+    fields = hidden_field_tag(:transloadit, params, :id => nil)
 
     if Transloadit::Rails::Engine.configuration['auth']['secret'].present?
       signature = Transloadit::Rails::Engine.sign(params)
