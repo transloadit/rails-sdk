@@ -49,7 +49,7 @@ module Transloadit::Rails::ViewHelper
       ]
 
       js_options = options.map do |key, val|
-        "#{key.to_json}: #{callbacks.include?(key.downcase) ? val : val.to_json}"
+        "#{key.to_json}: #{callbacks.include?(key.to_s.downcase.to_sym) ? val : val.to_json}"
       end.join(",\n")
 
       "{#{js_options}}"
