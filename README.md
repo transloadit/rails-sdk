@@ -305,7 +305,12 @@ production:
     ...
 ```
 
-
 ## License
 
 MIT, see [LICENSE](LICENSE)
+
+
+
+## Documentation
+
+See <a href="https://github.com/transloadit/rails-sdk/blob/master/README.md">GitHub</a> for the full documentation.
