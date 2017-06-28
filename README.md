@@ -305,7 +305,63 @@ production:
     ...
 ```
 
-
 ## License
 
 MIT, see [LICENSE](LICENSE)
+
+
+
+## Install
+
+```bash
+$ gem install transloadit-rails
+```
+
+or add the 'transloadit-rails' gem to your Rails project's Gemfile and update your bundle.
+
+```bash
+$ echo "gem 'transloadit-rails'" >> Gemfile
+$ bundle install
+```
+
+After installation you need to run the transloadit `install` generator to complete the setup.
+
+```bash
+$ rails g transloadit:install
+```
+
+## Usage
+
+Refer to the templates (which you have set in the [config](https://github.com/transloadit/rails-sdk#configuration)) with the `transloadit` helper.
+
+```erb
+<%= form_for :upload, :html => { :id => 'upload' } do |form| %>
+  <%= transloadit :s3_store %>
+  <%= form.label      :file, 'File to upload' %>
+  <%= form.file_field :file %>
+  <%= form.submit %>
+<% end %>
+
+<%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' %>
+<%= transloadit_jquerify :upload %>
+```
+
+This requires jQuery, and loads the [Transloadit jQuery plugin](https://github.com/transloadit/jquery-sdk).
+*(Be sure to exclude the `<%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' %>` tag if you already have jQuery loaded.)*
+
+It also uses JavaScript to ensure your form is encoded as `multipart/form-data`.
+
+If you want to use the automatic transloadit parameter decoding, you have to include
+the Transloadit::Rails::ParamsDecoder module into your controller
+
+```ruby
+class YourController
+  include Transloadit::Rails::ParamsDecoder
+end
+```
+
+that way the param[:transloadit] is automatically decoded for you, if it exists
+
+## Example
+
+An example rails application following the [tutorial above](https://github.com/transloadit/rails-sdk#tutorial) can be found in the [examples](https://github.com/transloadit/rails-sdk/tree/master/examples) directory.
