@@ -18,14 +18,14 @@ This is a **Rails** SDK to make it easy to talk to the [Transloadit](https://tra
 $ gem install transloadit-rails
 ```
 
-or add the 'transloadit-rails' gem to your Rails project's Gemfile and update your bundle.
+or add the `transloadit-rails` Gem to your Rails project's `Gemfile` and update your bundle.
 
 ```bash
 $ echo "gem 'transloadit-rails'" >> Gemfile
 $ bundle install
 ```
 
-After installation you need to run the transloadit `install` generator to complete the setup.
+After installation you need to run the `transloadit:install` generator to complete the setup.
 
 ```bash
 $ rails g transloadit:install
@@ -88,7 +88,8 @@ production:
 
 ## Usage
 
-Refer to the templates (which you have set in the [config](https://github.com/transloadit/rails-sdk#configuration)) with the `transloadit` helper.
+Refer to the <dfn>Templates</dfn> (which you have set in the 
+  [config](https://github.com/transloadit/rails-sdk/#configuration)) with the `transloadit` helper.
 
 ```erb
 <%= form_for :upload, :html => { :id => 'upload' } do |form| %>
@@ -107,8 +108,8 @@ This requires jQuery, and loads the [Transloadit jQuery plugin](https://github.c
 
 It also uses JavaScript to ensure your form is encoded as `multipart/form-data`.
 
-If you want to use the automatic transloadit parameter decoding, you have to include
-the Transloadit::Rails::ParamsDecoder module into your controller
+If you want to use the automatic `transloadit` parameter decoding, you have to include
+the `Transloadit::Rails::ParamsDecoder` module into your controller
 
 ```ruby
 class YourController
@@ -116,7 +117,7 @@ class YourController
 end
 ```
 
-that way the param[:transloadit] is automatically decoded for you, if it exists
+that way the `param[:transloadit]` is automatically decoded for you, if it exists
 
 ## Tutorial
 
