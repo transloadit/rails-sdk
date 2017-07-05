@@ -88,10 +88,9 @@ production:
 
 ## Usage
 
-Refer to the <dfn>Templates</dfn> (which you have set in the 
-  [config](https://github.com/transloadit/rails-sdk/#configuration)) with the `transloadit` helper.
+Refer to the <dfn>Templates</dfn> (which you have set in the [config](https://github.com/transloadit/rails-sdk/#configuration)) with the `transloadit` helper.
 
-```erb
+```html
 <%= form_for :upload, :html => { :id => 'upload' } do |form| %>
   <%= transloadit :s3_store %>
   <%= form.label      :file, 'File to upload' %>
@@ -103,10 +102,9 @@ Refer to the <dfn>Templates</dfn> (which you have set in the
 <%= transloadit_jquerify :upload %>
 ```
 
-This requires jQuery, and loads the [Transloadit jQuery plugin](https://github.com/transloadit/jquery-sdk).
-*(Be sure to exclude the `<%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' %>` tag if you already have jQuery loaded.)*
+This requires jQuery, and loads the [Transloadit jQuery plugin](https://github.com/transloadit/jquery-sdk/). Be sure to exclude the `<%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' %>` tag if you already have jQuery loaded.
 
-It also uses JavaScript to ensure your form is encoded as `multipart/form-data`.
+JavaScript also ensures your form is encoded as `multipart/form-data`.
 
 If you want to use the automatic `transloadit` parameter decoding, you have to include
 the `Transloadit::Rails::ParamsDecoder` module into your controller
@@ -118,6 +116,9 @@ end
 ```
 
 that way the `param[:transloadit]` is automatically decoded for you, if it exists
+
+**Note** Since it's still very young, the Transloadit Rails SDK does not include batteries for it yet, but
+if you're looking for a jQuery-less integration, check out [Uppy](https://transloadit.com/docs/#uppy), our next-gen file uploader for the web.
 
 ## Tutorial
 
@@ -246,7 +247,7 @@ upload finishes.
 
 ## Example
 
-An example rails application following the [tutorial above](https://github.com/transloadit/rails-sdk#tutorial) can be found in the [examples](https://github.com/transloadit/rails-sdk/tree/master/examples) directory.
+An example rails application following the [tutorial above](https://github.com/transloadit/rails-sdk/#tutorial) can be found in the [examples](https://github.com/transloadit/rails-sdk/tree/master/examples) directory.
 
 ## Testing
 
