@@ -117,8 +117,10 @@ end
 
 that way the `param[:transloadit]` is automatically decoded for you, if it exists
 
-**Note** Since it's still very young, the Transloadit Rails SDK does not include batteries for it yet, but
-if you're looking for a jQuery-less integration, check out [Uppy](https://transloadit.com/docs/#uppy), our next-gen file uploader for the web.
+<div class="tip" markdown="1">
+  Since it's still very young, the Transloadit Rails SDK does not include batteries for it yet, but
+  if you're looking for a jQuery-less integration, check out [Uppy](https://transloadit.com/docs/#uppy), our next-gen file uploader for the web.
+</div>
 
 ## Tutorial
 
