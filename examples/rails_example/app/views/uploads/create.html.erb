@@ -3,3 +3,4 @@
 
 <h1>Resized upload image</h1>
 <%= image_tag params[:transloadit][:results][:resize].first[:url] %>
+<pre><%= JSON.pretty_generate(params[:transloadit].as_json) %></pre>
