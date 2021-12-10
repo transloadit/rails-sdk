@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/transloadit/rails-sdk.png?branch=master)](https://travis-ci.org/transloadit/rails-sdk)
+[![CI](https://github.com/transloadit/rails-sdk/actions/workflows/ci.yml/badge.svg)](https://github.com/transloadit/rails-sdk/actions/workflows/ci.yml)
 
 ## rails-sdk
 
@@ -295,7 +295,7 @@ Compatibility patches for other Rubies are welcome.
 Support for EOL'd Ruby 1.9.x and Ruby 2.0 has been dropped, please use version 1.2.0
 if you need support for older Ruby versions.
 
-Testing against these versions is performed automatically by [Travis CI](https://travis-ci.org/transloadit/rails-sdk).
+Testing against these versions is performed automatically by [GitHub Actions](https://github.com/transloadit/rails-sdk/actions/workflows/ci.yml).
 
 ### Support IE6 or jQuery < 1.9
 
