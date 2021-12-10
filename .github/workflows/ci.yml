@@ -6,7 +6,6 @@ jobs:
     strategy:
       matrix:
         ruby:
-          - 2.1
           - 2.2
           - 2.3
           - "jruby-9.3.2.0"
