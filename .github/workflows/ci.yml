@@ -9,8 +9,7 @@ jobs:
           - 2.1
           - 2.2
           - 2.3
-          - rbx-2
-          - jruby-9.0.0.0
+          - "jruby-9.3.2.0"
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
