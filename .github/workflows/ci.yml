@@ -17,6 +17,7 @@ jobs:
           - "4.0"
           - "4.1"
           - "4.2"
+          - "5.0"
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
     steps:
