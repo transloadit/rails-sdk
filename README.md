@@ -90,7 +90,7 @@ production:
 
 Refer to the <dfn>Templates</dfn> (which you have set in the [config](https://github.com/transloadit/rails-sdk/#configuration)) with the `transloadit` helper.
 
-```html
+```ruby
 <%= form_for :upload, :html => { :id => 'upload' } do |form| %>
   <%= transloadit :s3_store %>
   <%= form.label      :file, 'File to upload' %>
@@ -117,8 +117,8 @@ end
 
 that way the `param[:transloadit]` is automatically decoded for you, if it exists
 
-<div class="tip" markdown="1">
-  Since it's still very young, the Transloadit Rails SDK does not include batteries for it yet, but
+<div class="alert alert-note" markdown="1">
+  **Note:** Since it's still very young, the Transloadit Rails SDK does not include batteries for it yet, but
   if you're looking for a jQuery-less integration, check out [Uppy](https://transloadit.com/docs/sdks/uppy/), our next-gen file uploader for the web.
 </div>
 
