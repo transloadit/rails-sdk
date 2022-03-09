@@ -90,7 +90,7 @@ production:
 
 Refer to the <dfn>Templates</dfn> (which you have set in the [config](https://github.com/transloadit/rails-sdk/#configuration)) with the `transloadit` helper.
 
-```ruby
+```erb
 <%= form_for :upload, :html => { :id => 'upload' } do |form| %>
   <%= transloadit :s3_store %>
   <%= form.label      :file, 'File to upload' %>
