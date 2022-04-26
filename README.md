@@ -115,11 +115,11 @@ class YourController
 end
 ```
 
-that way the `param[:transloadit]` is automatically decoded for you, if it exists
+That way the `param[:transloadit]` is automatically decoded for you, if it exists.
 
-<div class="alert alert-note" markdown="1">
-  **Note:** Since it's still very young, the Transloadit Rails SDK does not include batteries for it yet, but
-  if you're looking for a jQuery-less integration, check out [Uppy](https://transloadit.com/docs/sdks/uppy/), our next-gen file uploader for the web.
+<div class="alert alert-note">
+  <strong>Note:</strong> Since it's still very young, the Transloadit Rails SDK does not include batteries for it yet, but
+  if you're looking for a jQuery-less integration, check out <a href="https://transloadit.com/docs/sdks/uppy/">Uppy</a>, our next-gen file uploader for the web.
 </div>
 
 ## Tutorial
