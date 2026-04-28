@@ -22,7 +22,7 @@ class SignatureTest < ActiveSupport::TestCase
       %(<input name="#{name}" value="#{value}">)
     end
 
-    config = { "auth" => { "secret" => "test-secret" } }
+    config = { "auth" => { "key" => "test-key", "secret" => "test-secret" } }
     template = Object.new
     template.define_singleton_method(:to_json) do |_options = nil|
       params
