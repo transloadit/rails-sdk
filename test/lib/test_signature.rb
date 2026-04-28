@@ -8,7 +8,7 @@ class SignatureTest < ActiveSupport::TestCase
 
     expected = "sha384:#{Transloadit::Request.send(:_hmac, secret, params)}"
 
-    Transloadit::Rails::Engine.stub(:transloadit, OpenStruct.new(secret: secret)) do
+    with_engine_singleton_method(:transloadit, proc { OpenStruct.new(secret: secret) }) do
       assert_equal expected, Transloadit::Rails::Engine.sign(params)
     end
   end
@@ -25,12 +25,36 @@ class SignatureTest < ActiveSupport::TestCase
     config = { "auth" => { "secret" => "test-secret" } }
     template = Struct.new(:json).new(params)
 
-    Transloadit::Rails::Engine.stub(:configuration, config) do
-      Transloadit::Rails::Engine.stub(:template, template) do
+    with_engine_singleton_method(:configuration, proc { config }) do
+      with_engine_singleton_method(:template, proc { template }) do
         html = helper.transloadit(:any)
         assert_includes html, 'name="signature"'
         assert_match(/value="sha384:[a-f0-9]+"/, html)
       end
+    end
+  end
+
+  private
+
+  def with_engine_singleton_method(name, implementation)
+    eigenclass = class << Transloadit::Rails::Engine
+      self
+    end
+
+    backup = "__orig_#{name}_for_test__"
+    had_method = eigenclass.method_defined?(name) || eigenclass.private_method_defined?(name)
+    eigenclass.send(:alias_method, backup, name) if had_method
+
+    Transloadit::Rails::Engine.define_singleton_method(name, &implementation)
+    yield
+  ensure
+    eigenclass = class << Transloadit::Rails::Engine
+      self
+    end
+    eigenclass.send(:remove_method, name) rescue nil
+    if had_method
+      eigenclass.send(:alias_method, name, backup)
+      eigenclass.send(:remove_method, backup) rescue nil
     end
   end
 end
