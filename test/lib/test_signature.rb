@@ -14,8 +14,6 @@ class SignatureTest < ActiveSupport::TestCase
   end
 
   test "view helper includes prefixed signature field" do
-    params = '{"auth":{"key":"test-key"}}'
-
     helper = Object.new
     helper.extend(Transloadit::Rails::ViewHelper)
     helper.define_singleton_method(:hidden_field_tag) do |name, value, _opts|
@@ -23,7 +21,7 @@ class SignatureTest < ActiveSupport::TestCase
     end
 
     config = { "auth" => { "secret" => "test-secret" } }
-    template = Struct.new(:json).new(params)
+    template = { "auth" => { "key" => "test-key" } }
 
     with_engine_singleton_method(:configuration, proc { config }) do
       with_engine_singleton_method(:template, proc { |_name = nil, _options = {}| template }) do
