@@ -8,7 +8,7 @@ class SignatureTest < ActiveSupport::TestCase
 
     expected = "sha384:#{Transloadit::Request.send(:_hmac, secret, params)}"
 
-    with_engine_singleton_method(:transloadit, proc { OpenStruct.new(secret: secret) }) do
+    with_engine_singleton_method(:transloadit, proc { |_options = {}| OpenStruct.new(secret: secret) }) do
       assert_equal expected, Transloadit::Rails::Engine.sign(params)
     end
   end
@@ -26,7 +26,7 @@ class SignatureTest < ActiveSupport::TestCase
     template = Struct.new(:json).new(params)
 
     with_engine_singleton_method(:configuration, proc { config }) do
-      with_engine_singleton_method(:template, proc { template }) do
+      with_engine_singleton_method(:template, proc { |_name = nil, _options = {}| template }) do
         html = helper.transloadit(:any)
         assert_includes html, 'name="signature"'
         assert_match(/value="sha384:[a-f0-9]+"/, html)
