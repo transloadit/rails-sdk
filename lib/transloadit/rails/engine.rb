@@ -83,7 +83,8 @@ class Transloadit
       # Signs a request to the Transloadit API.
       #
       def self.sign(params)
-        Transloadit::Request.send :_hmac, self.transloadit.secret, params
+        digest = Transloadit::Request.send :_hmac, self.transloadit.secret, params
+        "sha384:#{digest}"
       end
     end
   end
