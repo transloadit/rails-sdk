@@ -53,6 +53,12 @@ class NotificationVerifierTest < ActiveSupport::TestCase
     def transloadit_notification_client
       client
     end
+
+    # Rails 5.0 passes quirks_mode to JSON.parse, which current json gems reject. This test
+    # is about ParamsDecoder replacing params[:transloadit], not about how it decodes.
+    def transloadit_params
+      ActiveSupport::HashWithIndifferentAccess.new(JSON.parse(params[:transloadit]))
+    end
   end
 
   # Mirrors Transloadit#verify_notification! for transloadit gems that predate it.
@@ -169,8 +175,10 @@ class NotificationVerifierTest < ActiveSupport::TestCase
       Transloadit::Rails::Engine.define_singleton_method(:transloadit) { |_options = {}| configured }
     end
 
-    assert_same configured, controller.transloadit_notification_client
-  ensure
-    silence_warnings { Transloadit::Rails::Engine.define_singleton_method(:transloadit, original) }
+    begin
+      assert_same configured, controller.transloadit_notification_client
+    ensure
+      silence_warnings { Transloadit::Rails::Engine.define_singleton_method(:transloadit, original) }
+    end
   end
 end

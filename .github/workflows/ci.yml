@@ -36,6 +36,8 @@ jobs:
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
       REQUIRE_NOTIFICATION_VERIFICATION: ${{ matrix.require_notification_verification }}
+      # Bundler checks out ruby-sdk from git for the 8.0 gemfile; its test fixtures live in LFS.
+      GIT_LFS_SKIP_SMUDGE: "1"
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@afeafc3d1ab54a631816aba4c914a0081c12ff2f
