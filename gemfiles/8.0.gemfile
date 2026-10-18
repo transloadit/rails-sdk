@@ -1,0 +1,6 @@
+source "https://rubygems.org"
+
+gem 'railties', '~> 8.0.0'
+# Notification verification needs Transloadit#verify_notification!, unreleased until transloadit 4.1.0.
+gem 'transloadit', git: 'https://github.com/transloadit/ruby-sdk.git', branch: 'main'
+gemspec :path => '../'

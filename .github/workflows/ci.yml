@@ -28,8 +28,14 @@ jobs:
             gemfile: "4.1"
           - ruby: "jruby-9.4.14.0"
             gemfile: "4.2"
+        include:
+          # Runs notification verification against a transloadit gem that supports it.
+          - ruby: "3.3"
+            gemfile: "8.0"
+            require_notification_verification: "1"
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
+      REQUIRE_NOTIFICATION_VERIFICATION: ${{ matrix.require_notification_verification }}
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@afeafc3d1ab54a631816aba4c914a0081c12ff2f
