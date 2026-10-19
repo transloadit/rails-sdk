@@ -129,7 +129,8 @@ that receives notifications:
 ```ruby
 class TransloaditNotificationsController < ApplicationController
   include Transloadit::Rails::NotificationVerifier
-  skip_forgery_protection
+  # Transloadit cannot send your CSRF token. On Rails 3, use skip_before_filter.
+  skip_before_action :verify_authenticity_token
 
   def create
     status = transloadit_notification
