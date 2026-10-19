@@ -1,3 +1,8 @@
+### Unreleased
+* Add `Transloadit::Rails::NotificationVerifier`, which verifies notify_url signatures before
+  actions run and answers invalid notifications with 401. Requires the transloadit gem 4.1.0 or newer.
+* Document that `ParamsDecoder` decodes browser-submitted data without authenticating it.
+
 ### 3.0.0 / 2021-02-12
 * Update default jQuery version to v3
 

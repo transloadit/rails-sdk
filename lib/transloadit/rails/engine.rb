@@ -4,7 +4,8 @@ require 'rails'
 
 class Transloadit
   module Rails
-    autoload :ParamsDecoder, 'transloadit/rails/params_decoder'
+    autoload :NotificationVerifier, 'transloadit/rails/notification_verifier'
+    autoload :ParamsDecoder,        'transloadit/rails/params_decoder'
     autoload :ViewHelper,    'transloadit/rails/view_helper'
 
     class Engine < ::Rails::Engine

@@ -117,6 +117,60 @@ end
 
 That way the `param[:transloadit]` is automatically decoded for you, if it exists.
 
+ParamsDecoder only decodes. The data comes from the visitor's browser and is not
+authenticated, so do not use it to decide anything you would not let a visitor decide.
+
+### Verifying notifications
+
+When Transloadit POSTs the Assembly status to your `notify_url`, verify its signature
+before acting on it. Include `Transloadit::Rails::NotificationVerifier` in the controller
+that receives notifications:
+
+```ruby
+class TransloaditNotificationsController < ApplicationController
+  include Transloadit::Rails::NotificationVerifier
+  # Transloadit cannot send your CSRF token. On Rails 3, use skip_before_filter.
+  skip_before_action :verify_authenticity_token
+
+  def create
+    status = transloadit_notification
+    # Look up your record by status[:assembly_id] and update it idempotently.
+    head :ok
+  end
+end
+```
+
+It checks the signature over the raw `transloadit` form field with the Auth Secret
+from `config/transloadit.yml` before any action runs. Notifications that are missing
+a signature, are malformed or fail verification get an empty `401 Unauthorized`.
+A missing Auth Secret raises `Transloadit::Exception::MissingSecret` as a server error,
+because it is a configuration problem. The verified status is available as
+`transloadit_notification`, with indifferent access.
+
+This requires the `transloadit` gem 4.1.0 or newer; with an older version, the
+verification raises `NotImplementedError` explaining the requirement.
+
+Keep the controller separate from the actions that receive your upload form:
+browser form submissions carry no notification signature and would be rejected.
+Including ParamsDecoder in the same controller is safe, since verification reads the
+raw form field rather than the decoded `params[:transloadit]`.
+
+If notifications are signed with another Auth Key than the one in your configuration,
+override `transloadit_notification_client` to return a client with that key's secret:
+
+```ruby
+def transloadit_notification_client
+  Transloadit.new(key: ENV["TRANSLOADIT_KEY"], secret: ENV["TRANSLOADIT_SECRET"])
+end
+```
+
+Pick the secret from your own configuration, never from the notification itself,
+which is not trusted until it has been verified.
+
+Transloadit retries failed notifications, and replayed notifications are signed and
+verified the same way. A valid signature does not prevent duplicate deliveries, so
+make your handling idempotent, for example by keying it on the Assembly ID.
+
 <div class="alert alert-note">
   <strong>Note:</strong> Since it's still very young, the Transloadit Rails SDK does not include batteries for it yet, but
   if you're looking for a jQuery-less integration, check out <a href="https://transloadit.com/docs/sdks/uppy/">Uppy</a>, our next-gen file uploader for the web.
